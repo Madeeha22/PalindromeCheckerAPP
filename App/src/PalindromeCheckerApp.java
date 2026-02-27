@@ -8,6 +8,7 @@ public class PalindromeCheckerApp {
      * @version 1.0
      */
     public static void main(String[] args){
-    System.out.println("Welcome to the Palindrome Checker Management System\n" +"Version : 1.0\n" +
-            "System initialized successfully.");}
+        System.out.println("Welcome to the Palindrome Checker Management System");
+        System.out.println("System initialized successfully.");
+    }
 }
