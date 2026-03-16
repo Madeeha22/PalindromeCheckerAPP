@@ -1,45 +1,32 @@
+import java.util.LinkedList;
+
 public class PalindromeCheckerAPP {
 
     public static void main(String[] args) {
 
-        String input = "racecar";
+        // Define the input string
+        String input = "level";
 
-        PalindromeStrategy strategy = new StackStrategy();
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
 
-        long startTime = System.nanoTime();
-
-        boolean result = strategy.check(input);
-
-        long endTime = System.nanoTime();
-
-        long duration = endTime - startTime;
-
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
-        System.out.println("Execution Time (ns) : " + duration);
-    }
-}
-
-interface PalindromeStrategy {
-    boolean check(String input);
-}
-
-class StackStrategy implements PalindromeStrategy {
-
-    public boolean check(String input) {
-
-        java.util.Stack<Character> stack = new java.util.Stack<>();
-
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            stack.push(c);
+            list.add(c);
         }
 
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                return false;
+        // Flag to track palindrome state
+        boolean isPalindrome = true;
+
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+            if (!list.removeFirst().equals(list.removeLast())) {
+                isPalindrome = false;
+                break;
             }
         }
 
-        return true;
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
